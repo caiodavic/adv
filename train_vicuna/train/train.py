@@ -155,15 +155,15 @@ class SupervisedDataset(Dataset):
         self.labels = data_dict["labels"]
         self.attention_mask = data_dict["attention_mask"]
 
-        def __len__(self):
-            return len(self.input_ids)
-        
-        def __getitem__(self, i) -> Dict[str,torch.Tensor]:
-            return dict(
-                input_ids=self.input_ids[i],
-                labels=self.labels[i],
-                attention_mask=self.attention_mask[i],
-            )
+    def __len__(self):
+        return len(self.input_ids)
+    
+    def __getitem__(self, i) -> Dict[str,torch.Tensor]:
+        return dict(
+            input_ids=self.input_ids[i],
+            labels=self.labels[i],
+            attention_mask=self.attention_mask[i],
+        )
     
 class LazySupervisedDataset(Dataset):
     """Dataset for supervised fine-tuning"""
