@@ -222,7 +222,7 @@ def train(
     batch_size: int = 128,
     micro_batch_size: int = 4,
     num_epochs: int = 3,
-    learning_rate: float = 3e-4,
+    learning_rate: float = 1e-4,
     cutoff_len: int = 256,
     val_set_size: int = 2000,
     # lora hyperparams
@@ -405,8 +405,8 @@ def train(
     print("Starting the training")
     trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 
-    model.save_pretrained(output_dir)
-
+    model.save_pretrained(output_dir)    
+    
     print(
         "\n If there's a warning about missing keys above, please disregard :)"
     )
